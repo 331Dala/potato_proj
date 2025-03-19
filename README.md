@@ -5,22 +5,34 @@ A ML project detect the 💉potato early blight and late blight disease.
 Dataset：  
 https://www.kaggle.com/datasets/arjuntejaswi/plant-village?resource=download  
 
-if you used python version higher than python3.9, can't find tensorflow2.5(some of tensorflow didn't have tensorflow.keras.layers.experimental)
+system: windows10 (with **cuda11.3**)
 
-when install pakages, notice the depency impactibility
-cuda 11.3
-windows10
+## problems & solutions
 
+- python version higher than **python3.9**, can't find **tensorflow2.5**.  
+(some version of tensorflow didn't have tensorflow.keras.layers.experimental.)
 
-I encounter a cuda problem, when I want to training my model. 
-I get hint from notebook:"Kernel Restarting The kernel for training/training.ipynb appears to have died. It will restart automatically." 
-and nothing else I jupyter notebook Browser interface.
-check the runnig logs in CLI I find a massage said :"ould not locate zlibwapi.dll. Please make sure it is in your library path"
-I try to find It from NVIDIA official website, from here 
-https://forums.developer.nvidia.com/t/zlib-dll-for-latest-cudnn-in-official-install-guide-is-missing/197630/6
-I get some clues.
-I can't find file zlibwapi.dll from what they find zlibwapi.dll file.
-I search all the C desk ,find lot of zlibwapi.dll file.
-pick one of them paste it to your directory may like C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\bin
-then, restart your kernel try to train again. nice, probelm fixed!
+- when install pakages, notice the **compatibility** of dependencies and packages.  
+Use commands like `pip check`.   
 
+- Encounter cuda problem, when training model.   
+Get hint from notebook Browser userInterface:
+`Kernel Restarting The kernel for training/training.ipynb appears to have died.It will restart automatically.`
+if without any hints else,
+try to check the notebook running logs, in CLI, find massage like:
+`Could not locate zlibwapi.dll. Please make sure it is in your library path`
+so we try to find zlibwapi.dll. From NVIDIA official website below, I get some clues.  
+https://forums.developer.nvidia.com/t/zlib-dll-for-latest-cudnn-in-official-install-guide-is-missing/197630/6  
+If you can't find file zlibwapi.dll from where they find zlibwapi.dll file directories.
+Try to search all the C desk ,u will find a lot of zlibwapi.dll file.
+copy any one of them paste it to your directory like `C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v11.3\bin`.
+then, restart your kernel try to train again.  
+
+- Working on **FastAPI** error below occur.  
+ImportError: cannot import name 'ParamSpec' from 'typing_extensions'.  
+Try ```pip uninstall fastapi```and```
+pip install --no-cache fastapi```.  
+
+- Docker problems maybe due to the ports num, typos like me 
+  **8501:8501\-\->8501:8051**  
+  😫😫😫
