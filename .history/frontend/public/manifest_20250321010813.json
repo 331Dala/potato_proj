@@ -1,0 +1,15 @@
+{
+  "short_name": "PotatoApp",
+  "name": "Potato Disease Classification",
+  "icons": [
+    {
+      "src": "tablog.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#be6a77",
+  "background_color": "#ffffff"
+}
