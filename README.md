@@ -33,6 +33,6 @@ ImportError: cannot import name 'ParamSpec' from 'typing_extensions'.
 Try ```pip uninstall fastapi```and```
 pip install --no-cache fastapi```.  
 
-- Docker problems maybe due to the ports num, typos like me 
+- Docker problems maybe due to the ports num, typos like me   
   **8501:8501\-\->8501:8051**  
   😫😫😫
