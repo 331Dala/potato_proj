@@ -33,6 +33,35 @@ ImportError: cannot import name 'ParamSpec' from 'typing_extensions'.
 Try ```pip uninstall fastapi```and```
 pip install --no-cache fastapi```.  
 
-- Docker problems maybe due to the ports num, typos like me   
+- Docker problems maybe due to the ports num, typos like me 
   **8501:8501\-\->8501:8051**  
   😫😫😫
+
+# Start Step & Structure
+(Here use **Jupyter** with `python -m notebook` in folder `/training`)  
+tf dataset  
+Data augmentation(1.keras.layers.experimental.preprocessing & 2.ImageDataGenerator api)  
+↓  
+CNN (cache|prefetch)  
+↓  
+(from here I use **pycharm** in folder `/api`)
+Deployed via tf-serving in Docker to FastAPI.    
+run main-tf-serving.py,  
+open Docker run with:  
+``` PowerShell
+docker run --rm -it -p 8502:8502 -v D:/ml_workspace/potato_proj:/potato_proj tensorflow/serving --rest_api_port=8502 --model_config_file=/potato_proj/models.config
+``` 
+You can test with Postman.  
+↓  
+(Here I use VSCode for Frontend and PyCharm for Backend)
+React JS (Build UI and interact with)  
+Node.js (JavaScript running env)
+run Node.js in folder /frontend with:  
+```Bash
+npm run start
+```  
+Then run the `/api/main.py` in VSCode
+↓  
+GCP  
+↓  
+React Native (mobile application, get stuck here, will do it afterward)  
