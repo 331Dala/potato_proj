@@ -1,5 +1,6 @@
 import numpy as np
 from fastapi import  FastAPI, File, UploadFile
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 from io import BytesIO
 from PIL import Image
@@ -12,6 +13,19 @@ app = FastAPI()
 # main.py didn't deploy on tf server. Just for testing
 # main.py didn't deploy on tf server. Just for testing
 # main.py didn't deploy on tf server. Just for testing
+
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+]
+# CORS (Cross-Origin Resource Sharing)
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 MODEL = tf.keras.models.load_model("../saved_models/1")
 
